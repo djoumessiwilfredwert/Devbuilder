@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevBuilder</title>
+    <link rel="stylesheet" href="djou.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
+</head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Website</title>
+    <link rel="stylesheet" href="djou.css">
+    <style>
+        /* Add these new styles */
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide:nth-child(1) {
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1612838320302-4b3b3b3b3b3b');
+        }
+
+        .slide:nth-child(2) {
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97');
+        }
+
+        .slide:nth-child(3) {
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1498050108023-c5249f4df085');
+        }
+
+        .slider-navigation {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .slider-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .slider-dot.active {
+            background-color: rgb(0, 38, 255);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+       <div class="navbar">
+        <div class="logo">
+            <img src="WhatsApp_Image_2025-02-03_at_02.44.58_0c848882-removebg-preview.png">
+        </div>
+        <ul class="menu">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Aboutt</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#" class="cta-button">Contact</a></li>
+        </ul>
+    </header>
+
+    <!-- Corrected Slider Section -->
+    <section class="slider-container">
+        <div class="slide active">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2>Djoumessi Stanis: Web Developer & Graphic Designer</h2>
+                    <p>Bringing your digital vision to life with skillful web development and captivating design.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2>Custom Web Solutions</h2>
+                    <p>Building responsive and user-friendly websites that convert.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h2>Creative Design Services</h2>
+                    <p>Creating visually stunning designs that enhance user experience.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="slider-navigation">
+            <div class="slider-dot active"></div>
+            <div class="slider-dot"></div>
+            <div class="slider-dot"></div>
+        </div>
+    </section>
+
+
+    <script>
+        // Slider functionality
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.slider-dot');
+        let currentSlide = 0;
+        let slideInterval;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+            currentSlide = (n + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        // Auto-play slider
+        function startSlider() {
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+
+        // Pause on hover
+        const slider = document.querySelector('.slider-container');
+        slider.addEventListener('mouseenter', () => clearInterval(slideInterval));
+        slider.addEventListener('mouseleave', startSlider);
+
+        // Dot click event
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+            });
+        });
+
+        // Initialize slider
+        startSlider();
+    </script>
+    <!-- Add this after the hero section and before other sections -->
+<section class="about-section">
+    <div class="container">
+        <h2 class="section-title">About Me</h2>
+        
+        <div class="about-content">
+            <!-- Profile Image -->
+            <div class="profile-image">
+                <img src="deve.jpg" alt="deve">
+            </div>
+
+            <!-- About Text -->
+            <div class="about-text">
+                <h3>Professional Web Developer & Designer</h3>
+                <p class="intro-text">
+                    With over 5 years of experience in creating digital solutions, I specialize in building responsive websites 
+                    and engaging user interfaces. My passion lies in transforming complex problems into simple, beautiful, 
+                    and intuitive designs.
+                </p>
+
+                <!-- Skills List -->
+                <div class="skills">
+                    <h4>Technical Skills</h4>
+                    <ul class="skills-list">
+                        <li>HTML5 & CSS3</li>
+                        <li>JavaScript (ES6+)</li>
+                        <li>React & Vue.js</li>
+                        <li>Node.js & Python</li>
+                        <li>UI/UX Design</li>
+                        <li>Graphic Design</li>
+                    </ul>
+                </div>
+
+                <!-- Experience Timeline -->
+                <div class="experience">
+                    <h4>Experience</h4>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <h5>Senior Web Developer - Tech Corp</h5>
+                            <span>2020 - Present</span>
+                            <p>Lead development team in creating enterprise-level web applications</p>
+                        </div>
+                        <div class="timeline-item">
+                            <h5>Freelance Developer</h5>
+                            <span>2018 - 2020</span>
+                            <p>Delivered 50+ client projects ranging from e-commerce to portfolio websites</p>
+                        </div>
+                    </section>
+                    
+                        <!-- Add this after the About section -->
+<section class="services-section">
+    <div class="container">
+        <h2 class="section-title">Our Services</h2>
+        
+        <div class="services-grid">
+            <!-- Web Development Service -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-code"></i>
+                </div>
+                <h3>Web Development</h3>
+                <p>Custom website development from simple landing pages to complex web applications.</p>
+                <a href="#" class="service-cta">Learn More →</a>
+            </div>
+
+            <!-- UI/UX Design Service -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-palette"></i>
+                </div>
+                <h3>UI/UX Design</h3>
+                <p>User-centered interface design that enhances user experience and engagement.</p>
+                <a href="#" class="service-cta">Learn More →</a>
+            </div>
+
+            <!-- Graphic Design Service -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-brush"></i>
+                </div>
+                <h3>Graphic Design</h3>
+                <p>Professional branding, logo design, and marketing materials that stand out.</p>
+                <a href="#" class="service-cta">Learn More →</a>
+            </div>
+        </section>
+            <div class="bg-red-500 flex items-center justify-center min-h-screen">
+             <div class="bg-red-500 text-white p-8 rounded-lg flex flex-col md:flex-row items-center md:items-start space-y-8 md:space-y-0 md:space-x-8">
+              <div class="flex-shrink-0">
+               <div class="border-4 border-white rounded-full overflow-hidden">
+                <img alt="New" class="w-64 h-64 object-cover" height="300" src="New Project.jpg" width="300"/>
+               </div>
+              </div>
+              <div>
+               <h2 class="text-sm font-bold">
+                My Intro
+               </h2>
+               <h1 class="text-3xl font-bold mb-4">
+                My Intro About Me
+               </h1>
+               <p class="mb-4">
+                Djoumessi Stanis, a passionate Graphics and Web Design Expert dedicated to transforming ideas into visually stunning and user-friendly digital experiences.
+               </p>
+               <p class="mb-4">
+                With a blend of creativity and technical expertise, I craft impactful designs and intuitive websites tailored to elevate brands and connect with audiences effectively.
+               </p>
+               <p class="mb-4">
+                My goal is to deliver designs that not only look great but also achieve meaningful results for businesses.
+               </p>
+               <div class="flex items-center space-x-4 mt-4">
+                <i class="fas fa-user">
+                </i>
+                <span>
+                 Djoumessi Stanis
+                </span>
+               </div>
+               <div class="flex items-center space-x-4 mt-2">
+                <i class="fas fa-phone">
+                </i>
+                <span>
+                 651446418
+                </span>
+               </div>          
+
+</body>
+</html>
